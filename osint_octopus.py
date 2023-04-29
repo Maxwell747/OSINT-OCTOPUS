@@ -32,5 +32,5 @@ checkbox.pack(pady=12, padx=10)
 
 
 if __name__ == '__main__':
-    print(checkEmail('maxwellslingerland@gmail.com'))
+    print(checkEmail('someone@example.com'))
     # root.mainloop()
