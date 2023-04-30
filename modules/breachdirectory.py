@@ -2,11 +2,10 @@ from dotenv import dotenv_values
 from typing import Literal
 import requests
 
-KEY = dotenv_values('.env')['XRAPID_API_KEY']
 URL = 'https://breachdirectory.p.rapidapi.com/'
 HEADERS = {
     'content-type': 'application/octet-stream',
-    'X-RapidAPI-Key': KEY,
+    'X-RapidAPI-Key': dotenv_values('.env')['XRAPID_API_KEY'],
     'X-RapidAPI-Host': 'breachdirectory.p.rapidapi.com'
 }
 
@@ -38,9 +37,9 @@ def apiRequest(email: str) -> (int | dict[str, object]):
 
 def extract_info(data) -> (dict[str, object]):
     return {
-        "Date": data["headers"]["Date"],
-        "Requests-Remaining":
-            data["headers"]["X-RateLimit-Requests-Remaining"],
-        "Found": data["body"]["found"],
-        "Result": data["body"]["result"]
+        'Date': data['headers']['Date'],
+        'Requests-Remaining':
+            data['headers']['X-RateLimit-Requests-Remaining'],
+        'Found': data['body']['found'],
+        'Result': data['body']['result']
     }

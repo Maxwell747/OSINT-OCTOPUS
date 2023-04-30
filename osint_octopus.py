@@ -1,5 +1,5 @@
 import customtkinter
-from modules import (checkEmail)
+from modules import (checkEmail, builtWith, zoomEye)
 
 customtkinter.set_appearance_mode('dark')
 customtkinter.set_default_color_theme('green')
@@ -32,5 +32,5 @@ checkbox.pack(pady=12, padx=10)
 
 
 if __name__ == '__main__':
-    print(checkEmail('someone@example.com'))
+    print(zoomEye('ip', '34.129.234.75'))
     # root.mainloop()
