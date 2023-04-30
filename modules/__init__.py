@@ -6,3 +6,4 @@ from .theharvester import theHarvester
 from .nmap import run_nmap
 from .virustotal import checkFile
 from .metagoofil import metagoofil
+from .exiftool import extractMetadata

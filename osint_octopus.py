@@ -1,6 +1,7 @@
 import customtkinter
-from modules import (checkEmail, builtWith, zoomEye,
-                     recon_ng, theHarvester, run_nmap, checkFile, metagoofil)
+from modules import (checkEmail, builtWith, zoomEye, recon_ng,
+                     theHarvester, run_nmap, checkFile, metagoofil,
+                     extractMetadata)
 
 customtkinter.set_appearance_mode('dark')
 customtkinter.set_default_color_theme('green')
@@ -33,6 +34,5 @@ checkbox.pack(pady=12, padx=10)
 
 
 if __name__ == '__main__':
-    print(metagoofil(domain='kali.org', file_types='pdf',
-          save_directory='kalipdf', save_file='kalipdf.html'))
+    print(extractMetadata(['Project_Design_Document.pdf']))
     # root.mainloop()
