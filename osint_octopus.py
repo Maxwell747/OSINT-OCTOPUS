@@ -1,6 +1,6 @@
 import customtkinter
 from modules import (checkEmail, builtWith, zoomEye,
-                     recon_ng, theHarvester, run_nmap)
+                     recon_ng, theHarvester, run_nmap, checkFile)
 
 customtkinter.set_appearance_mode('dark')
 customtkinter.set_default_color_theme('green')
@@ -33,5 +33,5 @@ checkbox.pack(pady=12, padx=10)
 
 
 if __name__ == '__main__':
-    print(run_nmap('scanme.nmap.org'))
+    print(checkFile('./downloaded_files/env_template.txt'))
     # root.mainloop()
