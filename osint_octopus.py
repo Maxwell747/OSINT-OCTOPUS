@@ -1,5 +1,6 @@
 import customtkinter
-from modules import (checkEmail, builtWith, zoomEye, recon_ng)
+from modules import (checkEmail, builtWith, zoomEye,
+                     recon_ng, theHarvester, run_nmap)
 
 customtkinter.set_appearance_mode('dark')
 customtkinter.set_default_color_theme('green')
@@ -32,5 +33,5 @@ checkbox.pack(pady=12, padx=10)
 
 
 if __name__ == '__main__':
-    print(recon_ng('facebook.com'))
+    print(run_nmap('scanme.nmap.org'))
     # root.mainloop()
