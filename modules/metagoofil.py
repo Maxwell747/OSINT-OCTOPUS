@@ -31,5 +31,5 @@ def metagoofil(domain: str,
     if download:
         cmd.append('-w')
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
     return result.stdout

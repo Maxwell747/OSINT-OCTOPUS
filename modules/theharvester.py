@@ -20,6 +20,7 @@ def theHarvester(domain: str, source: Source, limit: int) -> str:
                '-l {limit}'.format(limit=limit)
                ]
 
-    result = subprocess.run(command, capture_output=True, text=True)
+    result = subprocess.run(
+        command, capture_output=True, text=True, shell=False)
 
     return result.stdout

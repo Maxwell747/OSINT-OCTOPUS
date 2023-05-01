@@ -12,6 +12,7 @@ def recon_ng(domain: str) -> str:
                'source={domain}'.format(domain=domain),
                '-x']
 
-    result = subprocess.run(command, capture_output=True, text=True)
+    result = subprocess.run(
+        command, capture_output=True, text=True, shell=False)
 
     return result.stdout
