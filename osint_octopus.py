@@ -105,34 +105,15 @@ def check_file():
 def run_metagoofil():
     domain = entry_domain8.get()
     file_types = entry_filetypes8.get()
-    delay = entry_delay8.get()
-    search_max = entry_searchmax8.get()
-    download_file_limit = entry_downloadfilelimit8.get()
-    save_directory = entry_savedirectory8.get()
-    number_of_threads = entry_numthreads8.get()
-    url_timeout = entry_urltimeout8.get()
-    user_agent = entry_useragent8.get()
-    save_file = entry_savefile8.get()
-    download = download_file_var.get()
-
-    if not delay:
-        delay = 30
-    if not search_max:
-        search_max = 100
-    if not download_file_limit:
-        download_file_limit = 100
-    if not save_directory:
-        save_directory = '.'
-    if not number_of_threads:
-        number_of_threads = 8
-    if not url_timeout:
-        url_timeout = 15
-    if not user_agent:
-        user_agent = None
-    if not save_file:
-        save_file = None
-    if not download:
-        download = False
+    delay = entry_delay8.get() or 30
+    search_max = entry_searchmax8.get() or 100
+    download_file_limit = entry_downloadfilelimit8.get() or 100
+    save_directory = entry_savedirectory8.get() or '.'
+    number_of_threads = entry_numthreads8.get() or 8
+    url_timeout = entry_urltimeout8.get() or 15
+    user_agent = entry_useragent8.get() or None
+    save_file = entry_savefile8.get() or None
+    download = download_file_var.get() or False
 
     if not domain or not file_types:
         text_response8.insert('end', 'Please enter a domain and file types.\n')

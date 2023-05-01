@@ -14,13 +14,13 @@ Source = Literal['anubis', 'baidu', 'bevigil', 'binaryedge', 'bing', 'bingapi',
 
 def theHarvester(domain: str, source: Source, limit: int) -> str:
 
-    command = ['theHarvester',
-               '-d {domain}'.format(domain=domain),
-               '-b {source}'.format(source=source),
-               '-l {limit}'.format(limit=limit)
-               ]
+    cmd = ['theHarvester',
+           '-d {}'.format(domain),
+           '-b {}'.format(source),
+           '-l {}'.format(limit)
+           ]
 
     result = subprocess.run(
-        command, capture_output=True, text=True, shell=False)
+        cmd, capture_output=True, text=True, shell=False)
 
     return result.stdout
