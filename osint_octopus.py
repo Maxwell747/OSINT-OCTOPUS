@@ -61,7 +61,7 @@ def run_recon_ng():
     if not domain:
         text_response4.insert('end', 'Please enter a domain name.\n')
     else:
-        response = recon_ng.recon_ng(domain)
+        response = recon_ng(domain)
         text_response4.insert('end', f'{response}\n')
 
 
@@ -80,14 +80,14 @@ def run_theHarvester():
 
 def run_nmap_scan():
     hosts = entry_hosts6.get()
-    ports = entry_ports6.get()
-    arguments = entry_arguments6.get()
-    timeout = entry_timeout6.get()
+    ports = entry_ports6.get() or '1-1000'
+    arguments = entry_arguments6.get() or '-A'
+    timeout = entry_timeout6.get() or 0
 
     if not hosts:
         text_response6.insert('end', 'Please enter a host or IP address.\n')
     else:
-        response = run_nmap.run_nmap(hosts, ports, arguments, timeout)
+        response = run_nmap(hosts, ports, arguments, int(timeout))
         text_response6.insert('end', f'{response}\n')
 
 
@@ -138,7 +138,7 @@ def run_metagoofil():
         text_response8.insert('end', 'Please enter a domain and file types.\n')
         return
 
-    response = metagoofil.metagoofil(
+    response = metagoofil(
         domain=domain,
         file_types=file_types,
         delay=int(delay),
@@ -513,18 +513,18 @@ button_run6.grid(column=2, row=0, sticky='w')
 
 # Create a Text widget for displaying the response
 label_response6 = ttk.Label(frame_nmap_scan, text='Response:')
-label_response6.grid(column=0, row=3, sticky='w')
+label_response6.grid(column=0, row=4, sticky='w')
 text_response6 = tk.Text(frame_nmap_scan, height=35)
-text_response6.grid(column=1, row=3, columnspan=2, sticky='w')
+text_response6.grid(column=1, row=4, columnspan=2, sticky='w')
 
 # Create a Label widget for saving the response
 label_save6 = ttk.Label(frame_nmap_scan, text='Save response:')
-label_save6.grid(column=0, row=4, sticky='w')
+label_save6.grid(column=0, row=5, sticky='w')
 entry_save6 = ttk.Entry(frame_nmap_scan, width=40)
-entry_save6.grid(column=1, row=4, sticky='w')
+entry_save6.grid(column=1, row=5, sticky='w')
 button_save6 = ttk.Button(
     frame_nmap_scan, text='Save', command=save_response6)
-button_save6.grid(column=2, row=4, sticky='w')
+button_save6.grid(column=2, row=5, sticky='w')
 
 notebook.add(frame_nmap_scan, text='nmap')
 
@@ -618,13 +618,13 @@ entry_useragent8 = ttk.Entry(frame_metagoofil, width=40)
 entry_useragent8.grid(column=1, row=8, sticky='w')
 
 # Create an Entry widget for the save file
-label_savefile8 = ttk.Label(frame_metagoofil, text='Save file:')
+label_savefile8 = ttk.Label(frame_metagoofil, text='Save file name:')
 label_savefile8.grid(column=0, row=9, sticky='w')
 entry_savefile8 = ttk.Entry(frame_metagoofil, width=40)
 entry_savefile8.grid(column=1, row=9, sticky='w')
 
 # Create a Checkbutton widget for the download
-label_download8 = ttk.Label(frame_metagoofil, text='Save file:')
+label_download8 = ttk.Label(frame_metagoofil, text='Download:')
 label_download8.grid(column=0, row=10, sticky='w')
 download_file_var = tk.BooleanVar()
 download8 = ttk.Checkbutton(frame_metagoofil, variable=download_file_var)

@@ -13,5 +13,6 @@ def checkFile(path: str) -> dict:
         analysis = client.scan_file(f, wait_for_completion=True)
 
     return {'Date': analysis.date,
-            'Results': analysis.results,
-            'Stats': analysis.stats}
+            'Stats': analysis.stats,
+            'Results': analysis.results
+            }
