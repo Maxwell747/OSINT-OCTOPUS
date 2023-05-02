@@ -18,12 +18,12 @@ Pillow==9.5.0
 pluggy==1.0.0
 PyExifTool==0.5.5
 PySocks==1.7.1
+pytest==7.3.1
 python-dotenv==0.21.0
 python-nmap==0.7.1
 requests==2.28.1
 soupsieve==2.4.1
 typing_extensions==4.5.0
 urllib3==1.26.15
-virustotal-python==1.0.2
 vt-py==0.17.5
 yarl==1.9.2
