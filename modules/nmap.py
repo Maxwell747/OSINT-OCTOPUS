@@ -28,6 +28,4 @@ def run_nmap(hosts: str = '127.0.0.1',
         host_data['protocols'] = protocols
         result[host] = host_data
 
-        print(nm.csv())
-
     return nm.csv()

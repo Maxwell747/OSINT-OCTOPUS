@@ -13,7 +13,8 @@ def builtWith(domain: str) -> (int | dict[str, object]):
 
 
 def apiRequest(domain: str) -> (int | dict[str, object]):
-    query = 'https://api.builtwith.com/free1/api.json?KEY={key}&LOOKUP={domain}'\
+    query = \
+        'https://api.builtwith.com/free1/api.json?KEY={key}&LOOKUP={domain}'\
         .format(key=KEY, domain=domain)
     response = requests.get(query)
 
