@@ -8,7 +8,6 @@ from .virustotal import checkFile
 from .exiftool import extractMetadata
 
 import subprocess
-import os
 
 # to my knowledge literal_eval is safe
 # it never executes the string passed to it

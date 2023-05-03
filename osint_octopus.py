@@ -464,7 +464,7 @@ notebook.add(frame_theHarvester, text='theHarvester')
 frame_nmap_scan = ttk.Frame(notebook, padding=20)
 
 # Create an Entry widget for the hosts
-label_hosts6 = ttk.Label(frame_nmap_scan, text='Hosts:')
+label_hosts6 = ttk.Label(frame_nmap_scan, text='Hosts (Required):')
 label_hosts6.grid(column=0, row=0, sticky='w')
 entry_hosts6 = ttk.Entry(frame_nmap_scan, width=40)
 entry_hosts6.grid(column=1, row=0, sticky='w')
