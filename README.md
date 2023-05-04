@@ -159,18 +159,82 @@ Checks to make sure the extract_info functions work, make sure that invalid file
 
 #### breachdirectory.py
 
+- **checkEmail**: Takes a user input email and calls the function *apiRequest*. Will return 'Rate Limit Reached' if the response if code is 429 or just the response or the extracted from the response.
+- **apiRequest**: Input is an email, make the api request, if the response code isn't in the 200's return the code, otherwise return the headers and body of the response as a dict.
+- **extractInfo**: Input is the return of *apiRequest* and returns a dict containing the date, requests remaining, the number of results and the results.
+
 #### builtwith.py
+
+- **builtWith**: Takes a user input domain and calls the function *apiRequest*. Will return 'Rate Limit Reached' if the response if code is 429 or just the response or the extracted from the response.
+- **apiRequest**: Input is an email, make the api request, if the response code isn't in the 200's return the code, otherwise return the headers and body of the response as a dict.
+- **extractInfo**: Input is the return of *apiRequest* and returns a dict containing the date, domain and the groups.
 
 #### exiftool.py
 
+- **exiftool**: Takes in a comma separated list of files from the user. Return the metadata of the file, and any invalid files in a dict.
+
 #### metagoofil.py
+
+- **meatagoofil**: requires a user input domain and file type. Uses subprocess to run a command that an array and return the captured output.
+
+Defaults for the rest of the values are:
+- delay: float = 30.0,
+- search_max: int = 100,
+- download_file_limit: int = 100,
+- save_directory: str = '.',
+- number_of_threads: int = 8,
+- url_timeout: int = 15,
+- user_agent: Optional[str] = None,
+- save_file: Optional[str] = None,
+- download: bool = False
 
 #### nmap.py
 
+- **run_nmap**: Run an nmap scan using the nmap library and return a string.
+
+Defaults for the inputs are:
+- hosts: str = '127.0.0.1',
+- ports: str | None = None,
+- arguments: str = '-A',
+- timeout: int = 0
+
 #### recon_ng.py
+
+- **recon_ng**: Input is a user supplied domain, and uses subprocess to run a command from a list, returns the captured output.
 
 #### theHarvester.py
 
+- **theHarvester**: takes in a user input domain and limit, sources is selected from a list. Uses subprocess to run a command from a list, returns the captured output.
+
+The options for source are:
+'anubis', 'baidu', 'bevigil', 'binaryedge', 'bing', 'bingapi',
+'bufferoverun', 'censys', 'certspotter', 'crtsh',
+'dnsdumpster', 'duckduckgo', 'fullhunt',
+'github-code', 'hackertarget', 'hunter',
+'intelx', 'omnisint', 'otx', 'pentesttools',
+'projectdiscovery', 'qwant', 'rapiddns',
+'rocketreach', 'securityTrails', 'sublist3r',
+'threatcrowd', 'threatminer',
+'urlscan', 'virustotal', 'yahoo', 'zoomeye'
+
 #### virustotal.py
 
+- **checkFiles**: takes an user input file path, returns a the following dict if invalid file path `{'Error': 'Invalid file path'}`. Otherwise passes the path to the VirusTotal client to check the file. Returns a dict with date, stats, and results based on the response from the vt client.
+
 #### zoomeye.py
+
+- **zoomEye**: Input is a user selected filter and user input name. Calls apiRequest with those and returns the extracted info, or if the request failed the corresponding error message.
+- **apiRequest**: Input is a user selected filter and user input name. Makes the api request, and if successful will return the headers and body, others the failing response code.
+- **extract_info**: Input the return of apiRequest if it was successful, and returns the date and body.
+
+Filter types: 'app', 'device', 'os', 'service', 'ip', 'cidr','hostname', 'port', 'city', 'country', 'asn','header', 'title', 'site'
+
+If the response code does not match one of the following just the number is returned:
+- 400: "request invalid, validate usage and try again",
+- 401: "request not authenticated, API token is missing, invalid or expired",
+- 402: "credits of the account was insufficient",
+- 403: "request not authorized, credential was suspended, exceeded usage",
+- 404: "request failed, the specified resource does not exist",
+- 405: "request failed, the specified method was not allowed",
+- 500: "error occurred, we are notified",
+- 503: "the request source was not available"
